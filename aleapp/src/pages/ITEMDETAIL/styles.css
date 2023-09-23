@@ -1,0 +1,42 @@
+/* Estilo predeterminado */
+.carta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .carta__info {
+    text-align: center;
+  }
+  
+  /* Estilo cuando está en modo detalles */
+  .carta.detail-mode {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .carta.detail-mode .carta__info {
+    text-align: left;
+  }
+  .product-details-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .product-details-container img {
+    max-width: 100%;
+  }
+  
+  .product-info {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  /* Clase adicional para mostrar la información debajo */
+  .product-details-below {
+    display: block;
+  }
+  
+  
+  

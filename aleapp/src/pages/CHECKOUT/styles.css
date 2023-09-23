@@ -1,0 +1,31 @@
+.parrafo{
+    font-size: 30px;
+    padding: 20px;
+}
+
+label{
+    display: block;
+        border: solid 3px;
+        margin-left: 10px;
+        background-color: rgb(205, 50, 50);
+        font-size: 30px;
+        padding: 5px; 
+        margin: 3px;
+        max-width: 1500px;
+}
+
+input{
+    
+   margin-left: 10px;
+    border: solid 5px rgb(235, 62, 62);
+    border-radius: 10px;
+    width: 450px;
+    height: 50px;
+    transition: all 1s;
+}
+
+
+.B{
+    width: 60px;
+    height: 23px;
+}

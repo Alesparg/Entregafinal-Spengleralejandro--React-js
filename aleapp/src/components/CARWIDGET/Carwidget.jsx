@@ -1,4 +1,6 @@
+import {BsCartFill} from 'react-icons/bs'
 import React, { useState } from 'react';
+
 import './styles.css';
 
 const CartWidget = () => {
@@ -10,13 +12,17 @@ const CartWidget = () => {
 
   return (
     <div className="cart-widget">
-      <i className="fas fa-shopping-cart"></i> {/* Ícono del carrito */}
+      <i className="fas fa-shopping-cart"></i> 
       <button onClick={handleIncrement}>Añadir al carrito</button>
       {cartItemCount > 0 && (
         <span className="cart-notification">
-          <div>Tiene en su carrito:</div>
+          <div><BsCartFill></BsCartFill></div>
           {cartItemCount} {''} <div>productos</div>
+          <div>
+           
+          </div>
         </span>
+
       )}
     </div>
   );

@@ -1,17 +1,3 @@
-.titulo__secundario{
-    font-size: 45px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-decoration: underline;
-    margin-left: 35px;
-    margin-top: 35px;
-}
-
-/* .precio{
-    max-width: 1200px;
-    margin: 0 auto;
-} */
-
-
 .precio__carta{
     display: grid;
     
@@ -19,7 +5,7 @@
 
 
 .carta{
-    background-color: white;
+    background-color: rgb(241, 36, 36);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 25px 50px -12px black;
@@ -79,7 +65,7 @@
 
 
     .precio__verde{
-        background-color: green;
+        background-color: rgb(154, 4, 7);
         color: white;
         font-weight: bold;
         padding: 15px 0;
@@ -91,26 +77,26 @@
     }
     
     .precio__verde:hover{
-        background-color: rgb(27, 215, 27);
+        background-color: rgb(59, 3, 12);
     }
 
-    /* Establecer el mismo ancho y alto para las imágenes en los elementos .carta__header */
+    
 .carta__header img {
-    width: 300px; /* Cambia este valor al ancho deseado */
-    height: 500px; /* Cambia este valor a la altura deseada */
-    object-fit: cover; /* Esto garantiza que la imagen se ajuste dentro del contenedor sin distorsionarla */
+    width: 300px; 
+    height: 500px; 
+    object-fit: cover; 
   }
   
-  /* Alinea el texto en el centro de los elementos .carta */
+ 
   .carta {
     text-align: center;
   }
   
-  /* Estilo adicional para las cartas */
+
   .carta {
     margin: 20px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #2c0000;
     border-radius: 5px;
   }
   
@@ -123,12 +109,4 @@
 
     .parrafo{
         font-size: 30px;
-        padding: 20px;
     }
-
-    /* @media (min-width: 992px ){
-
-        .precio__carta{
-            grid-template-columns: repeat(4, 1fr);
-        }
-    } */
