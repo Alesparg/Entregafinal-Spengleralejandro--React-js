@@ -1,0 +1,43 @@
+.carta{
+    background-color: rgb(193, 5, 5);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 25px 50px -12px black;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: 1s;
+}
+
+
+.carta__titulo{
+    margin-bottom: 20px;
+    font-size: 20px;
+    margin-left: 15px;
+    overflow-y: hidden;
+}
+
+.carta__descripcion{
+    margin-bottom: 40px;
+}
+
+.precio__verde{
+    background-color: rgb(225, 14, 3);
+    color: rgb(251, 251, 251);
+    font-weight: bold;
+    padding: 15px 0;
+    border-radius: 10px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    transition: 1.5s;
+}
+
+.precio__verde:hover{
+    background-color: rgb(203, 56, 45);
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+  }

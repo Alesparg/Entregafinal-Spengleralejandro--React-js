@@ -9,7 +9,7 @@ const Navigation = () => {
             element: <HomePages />
         },
         {
-            path: '/product/:idproduct',
+            path: '/item/:idProduct',
             element: <ItemDetailPage />
         },
         {

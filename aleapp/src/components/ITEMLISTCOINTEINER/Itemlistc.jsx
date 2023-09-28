@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './styles.css'
+import { productos } from "../../productos";
 
 const Dropdown = () => {
   const [selectedOption, setSelectedOption] = useState('');
@@ -8,7 +9,7 @@ const Dropdown = () => {
     const value = event.target.value;
     setSelectedOption(value);
     
-    // Navegar a la sección correspondiente si se selecciona una opción
+   
     if (value) {
       const element = document.getElementById(value);
       if (element) {
@@ -17,15 +18,17 @@ const Dropdown = () => {
     }
   };
 
+  
+
   return (
     <div className='dropdown'>
-      <label htmlFor="dropdown">Que deseas comprar:</label>
+      <label htmlFor="dropdown">Productos que vendemos:</label>
       <select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
-        <option value="">Selecciona lo que quieres</option>
+        <option value="">Ver lo que tenemos</option>
         <option value="consolas">Consolas</option>
         <option value="mandos">Mandos</option>
         <option value="portatiles">Portátiles</option>
-        <option value="otros">Otros objetos</option>
+        <option value="otros">Proximamente mas</option>
       </select>
       
    
@@ -36,6 +39,7 @@ const Dropdown = () => {
     </div>
   );
 };
-
 export default Dropdown;
+
+
 

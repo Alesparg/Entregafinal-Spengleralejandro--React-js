@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Navbar, NavbarHome, NavbarCheck } from '../../components/Navbar/Navbar'
+import  { Navbar, NavbarHome, NavbarCheck }  from '../../components/Navbar/Navbar'
 import './styles.css'
 
 const Checkout = () => {

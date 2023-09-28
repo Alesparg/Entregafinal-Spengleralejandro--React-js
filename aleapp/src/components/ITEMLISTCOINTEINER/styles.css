@@ -18,4 +18,13 @@
   p {
     margin-top: 10px;
   }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 8px 0;
+  }
   

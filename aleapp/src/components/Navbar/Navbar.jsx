@@ -22,15 +22,15 @@ const Navbar = () => {
                
                 
                 
-                <div className='item'> Ir a <Link to={'/'} >Inicio</Link> </div> 
-            <div className='item'> Ir a <Link to={'/Checkout'} >Crea una cuenta</Link> </div>
+               
             </section>
             </div>
-            <div className='contenedor'>
+            <div className='contenedors'>
                
             
 
-            <div><Dropdown /></div>
+            <div className='item'> Ir a <Link to={'/'} >Inicio</Link> </div> 
+            <div className='item'> Ir a <Link to={'/Checkout'} >Crea una cuenta</Link> </div>
             <div><CartWidget /> </div>
          
             </div>
@@ -51,12 +51,13 @@ const NavbarHome = () => {
             <div className='titulo'>
                 🎮Mundo Gamer🎮
             </div>
-            <div className='contenedor'>
+            <div className='contenedors'>
                 <section className='parrafos'>
-            
+
+            <Dropdown />
 
             <div> Ir a <Link to={'/Checkout'} >Crear una cuenta</Link> </div>
-            <div> Ir a <Link to={'/product/2233'} >Ver nuestros productos</Link> </div>
+            
             </section>
             </div>
            
@@ -76,12 +77,12 @@ const NavbarCheck = () => {
             <div className='titulo'>
                 🎮Mundo Gamer🎮
             </div>
-            <div className='contenedor'>
+            <div className='contenedors'>
                 <section className='parrafos'>
             
 
-            <div> Ir a <Link to={'/'} >Inicio</Link> </div>
-            <div> Ir a <Link to={'/product/2233'} >Ver nuestros productos</Link> </div>
+            <div> Ir a la pagina de <Link to={'/'} >Inicio</Link> </div>
+            
             </section>
             </div>
            
