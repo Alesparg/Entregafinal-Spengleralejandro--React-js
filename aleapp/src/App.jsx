@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import './App.css';
-
+import CartContext from "./context/CartContext";
 import Navigation from './routes/Navigation';
 
 
@@ -21,7 +21,9 @@ function App() {
 
   return (
 
-  <Navigation />
+    <CartContext>
+    <Navigation />
+  </CartContext>
 
   )
  

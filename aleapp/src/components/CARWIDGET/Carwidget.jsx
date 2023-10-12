@@ -1,31 +1,15 @@
-import {BsCartFill} from 'react-icons/bs'
-import React, { useState } from 'react';
-
-import './styles.css';
+import {BsCart} from 'react-icons/bs'
+import { Badge } from '@mui/material'
+import { useContext } from 'react'
+import { CartCtx } from '../../context/CartContext'
 
 const CartWidget = () => {
-  const [cartItemCount, setCartItemCount] = useState(0);
+    const {cart} = useContext(CartCtx)
+    return (
+        <Badge color='secondary' badgeContent={cart.length} >
+            <BsCart size={25} />
+        </Badge>
+    )
+}
 
-  const handleIncrement = () => {
-    setCartItemCount(cartItemCount + 1);
-  };
-
-  return (
-    <div className="cart-widget">
-      <i className="fas fa-shopping-cart"></i> 
-      <button onClick={handleIncrement}>Añadir al carrito</button>
-      {cartItemCount > 0 && (
-        <span className="cart-notification">
-          <div><BsCartFill></BsCartFill></div>
-          {cartItemCount} {''} <div>productos</div>
-          <div>
-           
-          </div>
-        </span>
-
-      )}
-    </div>
-  );
-};
-
-export default CartWidget;
+export default CartWidget

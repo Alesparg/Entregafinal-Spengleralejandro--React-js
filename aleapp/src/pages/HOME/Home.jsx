@@ -3,26 +3,69 @@ import { Navbar, NavbarHome, NavbarCheck }  from '../../components/Navbar/Navbar
 import Layout from "../../components/LAYOUT/Layout";
 import Item from '../../components/ITEM/Item'
 import ItemList from "../../components/ITEMLIST/Itemlist";
-import { productos } from "../../productos";
-import { useEffect, useState, isLoading } from "react";
+
+import React, { useEffect, useState, isLoading, useContext } from "react";
+import { CartCtx } from "../../context/CartContext";
 import { useParams} from "react-router-dom";
+import { Ring } from "@uiball/loaders";
+import { collection, getDocs, query, where } from "firebase/firestore"
+import { db } from "../../DB/db"
 
 import './styles.css'
 
+const Child = React.memo(({ mensaje }) => {
+  console.log('Renderización de Child');
+  return <div>{mensaje}</div>;
+});
 
+const ChildNoMemo = ({ mensaje }) => {
+  console.log('Renderización de Child NO MEMO');
+  return <div>{mensaje}</div>;
+}
 
 
 const Home = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [products, setProducts] = useState([]);
-    
+  const [isLoading, setLoading] = useState(true);
+
+  const { setListProducts } = useContext(CartCtx);
+  const [product, setProduct] = useState([]);
+  const [message, setMessage] = useState(0)
+  const { idProduct } = useParams();
+
+  useEffect(() => {
+
+    const productsRef = collection(db, "productos")
+
+    getDocs(productsRef).then((response)=>{
+
+      const productsFirebase = response.docs.map((product)=>(
+        {id: product.id, ...product.data() }
+      ))
+      setProduct(productsFirebase)
+      setLoading(false)
+    })
+
+    const q = query(productsRef, where("categoria", "==", "Mandos"))
+
+    getDocs(q).then((response)=>{
+
+      const productsFirebase = response.docs.map((product)=>(
+        {id: product.id, ...product.data()}
+      ))
+      console.log(productsFirebase);
+    })
+
+
+
+
+
   
-    useEffect(() => {
-      setTimeout(() => {
-        setProducts(productos);
-        setIsLoading(false)
-      }, 1000);
-    }, []);
+      
+  }, [idProduct]);
+
+  const config = isLoading ? {
+    className: 'desactivate'
+  } : {}
 
 
 
@@ -47,21 +90,26 @@ const Home = () => {
           
         <h1>Nuestros productos:</h1>
         <section>
-      <ItemList className='as' >
-        {
-            isLoading 
             
-            ? <p>Cargando . . .</p>
-           
-            : products.map(prod => (
-                <Item  
-                id={prod.id}
-                nombre={prod.nombre}
-                descripcion={prod.descripcion}
-                />
-            ))
-        }
-      </ItemList>
+      <Child mensaje={message} />
+      <ChildNoMemo mensaje={message} />
+
+<button onClick={()=> setMessage(message + 1)} >Sumar</button>
+
+
+
+
+<ItemList className='as'>
+          {isLoading && <Ring />}
+          {!isLoading && product.map((prod) => (
+            <Item
+              key={prod.id}
+              id={prod.id}
+              nombre={prod.nombre}
+              descripcion={prod.descripcion}
+            />
+          ))}
+        </ItemList>
       
       </section>
     

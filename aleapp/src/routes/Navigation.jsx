@@ -1,5 +1,5 @@
 import {createBrowserRouter , RouterProvider} from 'react-router-dom'
-import { HomePages, ItemDetailPage, CheackoutPage } from '../pages/Index'
+import { CartPage, HomePages, ItemDetailPage, CheackoutPage } from '../pages/Index'
 
 const Navigation = () => {
 
@@ -16,6 +16,10 @@ const Navigation = () => {
             path: '/checkout',
             element: <CheackoutPage />
 
+        },
+        {
+            path:'/cart',
+            element: <CartPage />
         }
      ])
 

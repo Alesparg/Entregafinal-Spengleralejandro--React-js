@@ -3,11 +3,14 @@ import { productos } from "../../productos";
 import './styles.css'
 const Item = ({ id, nombre, precio, descripcion, imgUrl }) => {
 
-  const handloClick = (event) =>{
+  const handleClick = (event) => {
+    //parametro event captura el evento sintetico
+    //Detiene el comportamiento por default
     event.preventDefault()
+    // Detiene la propagacion de los eventos por defaults de sus padres
     event.stopPropagation()
 
-    console.log(id. nombre, precio, descripcion)
+    console.log(id, nombre, precio , descripcion)
   }
 
   
