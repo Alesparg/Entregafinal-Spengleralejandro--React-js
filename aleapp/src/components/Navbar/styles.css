@@ -36,6 +36,10 @@ margin-top: 5px;
     
 }
 
+.carro{
+  margin-left: 10px;
+}
+
 .container {
     display: flex;
     flex-direction: column;

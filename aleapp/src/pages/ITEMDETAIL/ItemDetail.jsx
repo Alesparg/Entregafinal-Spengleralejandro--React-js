@@ -62,7 +62,7 @@ const ItemDetail = () => {
         
   
         <h2>
-          Ir a <Link to={"/"}>Home</Link>
+          Ir a <Link to={"/"}>Inicio</Link>
         </h2>
         <button onClick={() => addToCart(product.id)}>Añadir al carrito</button>
       </article>

@@ -10,12 +10,20 @@ const CartContext = ({ children }) => {
   const [loadingProducts, setLoadingProducts] = useState(true);
   const [listProducts, setListProducts] = useState([]);
 
+
+  const clearCart = () => {
+    setCart([]);
+  };
+
   // Cargar la lista de productos desde Firestore
   useEffect(() => {
     const fetchProducts = async () => {
       const productsCollection = collection(db, "productos");
       const productsQuery = query(productsCollection, where("stock", ">", 0)); // Opcional: Puedes filtrar los productos por stock, por ejemplo
       const productsSnapshot = await getDocs(productsQuery);
+
+
+      
 
       const productsData = [];
       productsSnapshot.forEach((doc) => {
@@ -40,7 +48,7 @@ const CartContext = ({ children }) => {
   };
 
   return (
-    <CartCtx.Provider value={{ listProducts, selectedProduct, setSelectedProduct, cart, setCart, addToCart, loadingProducts }}>
+    <CartCtx.Provider value={{ listProducts, selectedProduct, setSelectedProduct, cart, setCart, addToCart, loadingProducts, clearCart }}>
       {children}
     </CartCtx.Provider>
   );

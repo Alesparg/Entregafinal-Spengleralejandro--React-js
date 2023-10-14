@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { Navbar, NavbarHome, NavbarCheck }  from '../../components/Navbar/Navbar'
-import Layout from "../../components/LAYOUT/Layout";
 import Item from '../../components/ITEM/Item'
 import ItemList from "../../components/ITEMLIST/Itemlist";
-
 import React, { useEffect, useState, isLoading, useContext } from "react";
 import { CartCtx } from "../../context/CartContext";
 import { useParams} from "react-router-dom";
@@ -26,11 +24,11 @@ const ChildNoMemo = ({ mensaje }) => {
 
 const Home = () => {
   const [isLoading, setLoading] = useState(true);
-
   const { setListProducts } = useContext(CartCtx);
   const [product, setProduct] = useState([]);
   const [message, setMessage] = useState(0)
   const { idProduct } = useParams();
+  
 
   useEffect(() => {
 
@@ -88,13 +86,12 @@ const Home = () => {
             </section>
 
           
-        <h1>Nuestros productos:</h1>
+        <h1 className="np">Nuestros productos:</h1>
         <section>
             
-      <Child mensaje={message} />
-      <ChildNoMemo mensaje={message} />
+      
 
-<button onClick={()=> setMessage(message + 1)} >Sumar</button>
+
 
 
 

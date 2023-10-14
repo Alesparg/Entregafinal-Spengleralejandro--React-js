@@ -1,9 +1,21 @@
-import React, { useContext } from 'react';
-import { CartCtx } from '../../context/CartContext';
+import React, { useContext, useState  } from 'react';
+import { CartCtx   } from '../../context/CartContext';
 import Layout from '../../components/Layout/Layout';
+import { addDoc } from 'firebase/firestore';
+import { ordenCollections } from '../../DB/db';
+import './styles.css'
 
 const Cart = () => {
-  const { cart: cartProducts } = useContext(CartCtx);
+  const { cart: cartProducts, clearCart } = useContext(CartCtx);
+  const [isCartEmpty, setIsCartEmpty] = useState(false);
+
+  const handleClearCart = () => {
+    clearCart();
+    setIsCartEmpty(true); // Marcar el carrito como vacío
+  };
+  
+
+  
 
   // Función para calcular el total de la compra
   const calculateTotal = () => {
@@ -31,23 +43,47 @@ const Cart = () => {
     return deliveryDate.toLocaleDateString('es-ES', options);
   };
 
+  const [orderId, setOrderId] = useState(null);
+  const order = {
+    comprador: { nombre: "pepe", telefono: "2349848", email: "pepito@gmail.com" },
+    compra: cartProducts.map((product) => ({
+      id: product.id,
+      nombre: product.nombre,
+      precio: product.precio,
+    })),
+    total: calculateTotal(), // Puedes usar la función que ya tienes para calcular el total
+  };
+  
+
+  const createOrderInFirebase = () => {
+    addDoc(ordenCollections, order)
+      .then((docRef) => {
+        setOrderId(docRef.id); // Establece el ID en el estado
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Layout>
-      <div>
+      <div className='todo'>
         {!cartProducts.length ? (
           <h1>No tienes productos en tu carrito</h1>
         ) : (
           <div>
             {cartProducts.map((product) => (
-              <h3 key={product.id}>
+              <h3 className='producto' key={product.id}>
                 {product.nombre}
                 {product.quantity > 1 ? ` (x${product.quantity})` : ''}: Precio: ${product.precio * product.quantity}
               </h3>
             ))}
-            <h4>Total de la compra: ${calculateTotal()}</h4>
-            <p>Fecha de compra: {getCurrentDate()}</p>
-            <p>Fecha de entrega: {getDeliveryDate()}</p>
+            <h4 className='total' >Total de la compra: ${calculateTotal()}</h4>
+            <p className='fechas' >Fecha de compra: {getCurrentDate()}</p>
+            <p className='fechas' >Fecha de entrega: {getDeliveryDate()}</p>
+            <button className='botonc' onClick={createOrderInFirebase}>Finalizar Compra</button>
+            {!isCartEmpty && <button className='botonc' onClick={handleClearCart}>Vaciar Carrito</button>}
+            {orderId && <p className='id'>ID de la compra: {orderId}</p>}
           </div>
+          
         )}
       </div>
     </Layout>

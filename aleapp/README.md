@@ -1,8 +1,13 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# Coderhouse-Reactjs-SpenglerAlejandro
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Hola soy Spengler Alejandro y este es mi proyecto de react js sobre un ecoomer sobre un sitio web que vende videojuegos.
+
+Tiene una pagina principal con todos los productos cargados desde firabase y el cual cada productos se puede ver a detalle y agregar al carrito 
+
+
+Puedes ponerte en contacto conmigo atravez de mi correo: spengleralejandro@gmail.com
+
+

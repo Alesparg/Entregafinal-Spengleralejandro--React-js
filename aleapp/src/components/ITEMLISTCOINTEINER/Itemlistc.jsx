@@ -1,45 +1,73 @@
-import React, { useState } from 'react';
-import './styles.css'
-import { productos } from "../../productos";
+import React, { useState, useEffect } from 'react';
+import { db } from '../../DB/db'; // Importa la instancia de Firebase
+import { collection, query, where, getDocs } from "firebase/firestore"; // Importa funciones de Firebase Firestore
 
-const Dropdown = () => {
-  const [selectedOption, setSelectedOption] = useState('');
+function Dropdown() {
+  const [productos, setProductos] = useState([]);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
 
-  const handleOptionChange = (event) => {
-    const value = event.target.value;
-    setSelectedOption(value);
-    
-   
-    if (value) {
-      const element = document.getElementById(value);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+  useEffect(() => {
+    async function fetchData() {
+      const productosRef = collection(db, 'productos');
+      const q = query(productosRef, where('categoria', '==', categoriaSeleccionada));
+
+      try {
+        const querySnapshot = await getDocs(q);
+
+        const products = [];
+        querySnapshot.forEach((doc) => {
+          products.push({ id: doc.id, ...doc.data() });
+        });
+
+        setProductos(products);
+      } catch (error) {
+        console.error("Error al recuperar los productos:", error);
       }
     }
+
+    fetchData();
+  }, [categoriaSeleccionada]);
+
+  const handleCategoriaChange = (event) => {
+    setCategoriaSeleccionada(event.target.value);
   };
 
-  
-
   return (
-    <div className='dropdown'>
-      <label htmlFor="dropdown">Productos que vendemos:</label>
-      <select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
-        <option value="">Ver lo que tenemos</option>
-        <option value="consolas">Consolas</option>
-        <option value="mandos">Mandos</option>
-        <option value="portatiles">Portátiles</option>
-        <option value="otros">Proximamente mas</option>
+    <div>
+      <select value={categoriaSeleccionada} onChange={handleCategoriaChange}>
+        <option value="">Los productos que vendemos</option>
+        <option value="Consola">Consola</option>
+        <option value="Mandos">Mandos</option>
+        <option value="Portatiles">Portátiles</option>
       </select>
-      
-   
-
-      {selectedOption && (
-        <p>Has seleccionado: {selectedOption}</p>
-      )}
+      <ul>
+        {productos.map((producto) => (
+          <li key={producto.id}>{producto.nombre}</li>
+        ))}
+      </ul>
     </div>
   );
-};
-export default Dropdown;
+}
+
+export default Dropdown;         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

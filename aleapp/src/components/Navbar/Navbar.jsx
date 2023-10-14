@@ -31,9 +31,10 @@ const Navbar = () => {
 
             <div className='item'> Ir a <Link to={'/'} >Inicio</Link> </div> 
             <div className='item'> Ir a <Link to={'/Checkout'} >Crea una cuenta</Link> </div>
-            <Link to={'/cart'}>
+            <div className='carro'> <Link to={'/cart'}>
       <CartWidget/>
-      </Link>
+      </Link></div>
+            
          
             </div>
            
